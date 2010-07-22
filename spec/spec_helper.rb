@@ -35,7 +35,7 @@ Spec::Runner.configure do |config|
   # for all of your examples, even those that don't use them.
 end
 
-gem 'thoughtbot-factory_girl', '>= 1.2.1'
+gem 'factory_girl', '>= 1.2.1'
 require 'factory_girl'
 
 require File.dirname(__FILE__) + "/factories.rb"
