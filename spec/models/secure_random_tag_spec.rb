@@ -15,6 +15,11 @@ describe 'Secure random tag' do
      @page.should render('<r:secure_random method="invalid_method" />').with_error("Invalid method 'invalid_method' for ActiveSupport::SecureRandom")
   end
 
+  it '<r:secure_random method="word" /> should render pronounceable password' do
+    @page.should_receive('pronounceable_password').with(16).and_return('test')
+    @page.should render('<r:secure_random method="word" />').as('test')
+  end
+
   ['base64', 'hex', 'random_bytes', 'random_number'].each do |secure_method|
     it "<r:secure_random method='#{secure_method}' length='10' /> should render something" do
       ActiveSupport::SecureRandom.should_receive(secure_method).with(10).and_return('test')
